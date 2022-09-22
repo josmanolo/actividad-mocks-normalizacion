@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/index.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        * {
+            font-family: "Figtree", Arial, Helvetica, sans-serif;
+        }
+        table {
+            width: 100%;
+            background-color: #FFFFFF;
+            border-collapse: collapse;
+            border-width: 2px;
+            border-color: #063690;
+            border-style: solid;
+            color: #2b2b2b;
+            
+        }
+
+        table td, table th {
+            border-width: 2px;
+            border-color: #063690;
+            border-style: solid;
+            padding: 5px;
+            text-align: center;
+        }
+
+        table th {
+            color: #fff;
+        }
+
+        table td img {
+            width: 150px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        table thead {
+            background-color: #063690;
+        }
+    </style>
+    
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>Productos</h1>
+        <hr>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody id="table">
+                    {{#each list.products}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{price}}</td>
+                            <td><img src={{image}}></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        <h1>Centro de Mensajes</h1>
+        <input type="text" id="user" placeholder="Ingresa tu usuario">
+        <input type="text" id="name" placeholder="Ingresa tu nombre">
+        <input type="text" id="lastName" placeholder="Ingresa tu apellido">
+        <input type="text" id="age" placeholder="Ingresa tu edad">
+        <input type="text" id="img" placeholder="Ingresa tu imagen">
+        <input type="text" id="text" placeholder="Ingresa tu mensaje">
+        <button onclick="sendMessage()" class="btn-chat">Enviar</button>
+        <hr>
+        <article id="chat">
+            {{#each list.messages}}
+                <p>
+                    <span>{{author}} - </span>
+                    <span>{{date}}: </span>
+                    <span>{{txt}}</span>
+                </p>
+            {{/each}}
+        </article>
+        
+    </main>
+    
+</body>
+</html>
